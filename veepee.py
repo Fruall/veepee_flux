@@ -50,7 +50,7 @@ st.write(f'**Nombre total de marques :** {total_brands}')
 result_summary2 = pd.pivot_table(brands,index=['BrandName'],values=['Title'],aggfunc='count').reset_index().rename(columns={'Title':'count'})
 result_treemap2 = result_summary2[(result_summary2['BrandName'] != '') & (result_summary2['count'] > 1)]
 fig2 = px.treemap(result_treemap2,path=['BrandName'],values='count', width=1600, height=1000)
-fig2.show();
+st.plotly_chart(fig2)
 
 
 st.header('Echantillon de produits catégorisés')
