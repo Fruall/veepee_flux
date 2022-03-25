@@ -10,6 +10,8 @@ st.header("Veepee Flux")
 
 
 df = pd.read_csv('veepee_catalog_final.csv', sep=';', encoding='utf-8')
+brands = pd.read_csv('Brands.csv', sep=';', encoding='utf-8')
+
 #df = pd.read_excel('veepee_catalog_final.xlsx')
 
 #df = pd.read_excel('veepee_catalog_final.xlsx', engine='openpyxl')
@@ -37,9 +39,8 @@ fig = px.treemap(df_treemap,path=['Univers', 'Label'],values='count', width=1600
 #fig.show();
 st.plotly_chart(fig)
 
-st.header('Cartographie de marques')
 
-brands = pd.read_csv('Brands.csv', sep=';', encoding='utf-8')
+st.header('Cartographie de marques')
 
 total_brands = brands['BrandName'].nunique()
 
@@ -48,7 +49,7 @@ st.write(f'**Nombre total de marques :** {total_brands}')
 #Visualise sizes of supermarket categories (manually added to result_labelled) and clean clusters
 result_summary2 = pd.pivot_table(brands,index=['BrandName'],values=['Title'],aggfunc='count').reset_index().rename(columns={'Title':'count'})
 result_treemap2 = result_summary2[(result_summary2['BrandName'] != '') & (result_summary2['count'] > 1)]
-fig2 = px.treemap(result_treemap2,path=['BrandName'],values='count')
+fig2 = px.treemap(result_treemap2,path=['BrandName'],values='count', width=1600, height=1000)
 fig2.show();
 
 
