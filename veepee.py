@@ -37,6 +37,21 @@ fig = px.treemap(df_treemap,path=['Univers', 'Label'],values='count', width=1600
 #fig.show();
 st.plotly_chart(fig)
 
+st.header('Cartographie de marques')
+
+brands = pd.read_csv('Brands.csv', sep=';', encoding='utf-8')
+
+total_brands = brands['BrandName'].nunique()
+
+st.write(f'**Nombre total de marques :** {total_brands}')
+
+#Visualise sizes of supermarket categories (manually added to result_labelled) and clean clusters
+result_summary = pd.pivot_table(brands,index=['BrandName'],values=['Title'],aggfunc='count').reset_index().rename(columns={'Title':'count'})
+result_treemap = result_summary[(result_summary['BrandName'] != '') & (result_summary['count'] > 1)]
+fig = px.treemap(result_treemap,path=['BrandName'],values='count')
+fig.show();
+
+
 st.header('Echantillon de produits catégorisés')
 st.table(df[:30])
 
