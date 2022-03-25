@@ -5,8 +5,6 @@ import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
 import plotly.express as px
-from tqdm import tqdm, tqdm_notebook
-import xlrd
 
 st.header("Veepee Flux")
 
