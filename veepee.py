@@ -20,5 +20,6 @@ df = df[['Title', 'Label', 'Univers']]
 #Visualise sizes of supermarket categories (manually added to result_labelled) and clean clusters
 df_summary = pd.pivot_table(df,index=['Label', 'Univers'],values=['Title'],aggfunc='count').reset_index().rename(columns={'Title':'count'})
 df_treemap = df_summary[(df_summary['Label'] != '') & (df_summary['count'] > 1)]
-fig = px.treemap(df_treemap,path=['Univers', 'Label'],values='count')
-fig.show();
+fig = px.treemap(df_treemap,path=['Univers', 'Label'],values='count', width=1600, height=1000)
+#fig.show();
+st.plotly_chart(fig)
