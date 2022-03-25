@@ -15,7 +15,7 @@ df = pd.read_csv('veepee_catalog_final.csv', sep=';', encoding='utf-8')
 #df = pd.read_excel('veepee_catalog_final.xlsx', engine='openpyxl')
 
 df = df[['Title', 'Label', 'Univers']]
-st.table(df[:30])
+#st.table(df[:30])
 
 #Visualise sizes of supermarket categories (manually added to result_labelled) and clean clusters
 df_summary = pd.pivot_table(df,index=['Label', 'Univers'],values=['Title'],aggfunc='count').reset_index().rename(columns={'Title':'count'})
