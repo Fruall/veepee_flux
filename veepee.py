@@ -46,10 +46,10 @@ total_brands = brands['BrandName'].nunique()
 st.write(f'**Nombre total de marques :** {total_brands}')
 
 #Visualise sizes of supermarket categories (manually added to result_labelled) and clean clusters
-result_summary = pd.pivot_table(brands,index=['BrandName'],values=['Title'],aggfunc='count').reset_index().rename(columns={'Title':'count'})
-result_treemap = result_summary[(result_summary['BrandName'] != '') & (result_summary['count'] > 1)]
-fig = px.treemap(result_treemap,path=['BrandName'],values='count')
-fig.show();
+result_summary2 = pd.pivot_table(brands,index=['BrandName'],values=['Title'],aggfunc='count').reset_index().rename(columns={'Title':'count'})
+result_treemap2 = result_summary2[(result_summary2['BrandName'] != '') & (result_summary2['count'] > 1)]
+fig2 = px.treemap(result_treemap2,path=['BrandName'],values='count')
+fig2.show();
 
 
 st.header('Echantillon de produits catégorisés')
